@@ -13,7 +13,7 @@
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
          ((NOT (LIST? L)) 0) ;if L is not a list, returns 0 - prevents numbers in nested list from being added
-         ((NOT (number? (car L))) (sum-up-numbers-simple (cdr L))) ;if first element is not a number, remove from list
+         ((NOT (number? (car L))) (sum-up-numbers-simple (cdr L))) ;if first element is not a number, disregard and continue looking for numbers
          (ELSE (+ (car L) (sum-up-numbers-simple (cdr L)))) ; else - performs addition on numbers in list, recursively
          ) ;closes out conditional 
 )
@@ -23,6 +23,6 @@
 (DEFINE (sum-up-numbers-general L) ;function definition: name and parameter (takes in a list called L)
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
-
+         ((NOT (number? (car L))) (sum-up-numbers-general (cdr L))) ;if first element is not a list, disregard and continue looking for numbers
         )
 )
