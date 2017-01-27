@@ -19,3 +19,10 @@
 )
          
 (sum-up-numbers-simple '(a 100 300 (100)))
+
+(DEFINE (sum-up-numbers-general L) ;function definition: name and parameter (takes in a list called L)
+        (COND
+         ((NULL? L) 0) ;returns 0 if entry is an empty list
+
+        )
+)
