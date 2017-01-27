@@ -22,13 +22,13 @@
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
          ((NOT (number? (car L))) (sum-up-numbers-general (cdr L))) ;if first element is not a list, disregard and continue looking for numbers
-         ((LIST? L) ;checks if L is a list
+         ((LIST? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))));checks if L is a list
           (+ (car L) (sum-up-numbers-general (cdr L)))) ;performs summation of L
-          ((LIST? L) ;*should check if there is a list within the list
-           (car L) (+ (sum-up-numbers-general (car L)) (sum-up-numbers-general(cdr L)))) ;adds numbers in nested list to sum of list
-        ) ;closes out conditional
-) ;closes out function
+         (ELSE (sum-up-numbers-general (cdr L)))
+) ;closes out conditional
+ ;closes out function
 
+(sum-up-numbers-general '(200 (200)))
 
 (DEFINE (mini L) ;helper function to get the minimum value in a list
         (COND
@@ -53,8 +53,8 @@
         (IF (NULL? L1) #F ;return False if L1 does not have any values
             (IF (NULL? L2) (mini '(L1)) ;return minimum value in L1 if L2 is empty
                 (combinel '(L1) '(L2))
-            )
-         )
+            ) ;close first if statement
+         ) ;close second if statement
          
 ) ;closes out function
 
