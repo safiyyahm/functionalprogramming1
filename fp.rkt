@@ -12,10 +12,10 @@
 (DEFINE (sum-up-numbers-simple L) ;function definition: name and parameter (takes in a list called L)
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
-         ((NOT (LIST? L)) 0) ;if L is not a list, returns 0
+         ((NOT (LIST? L)) 0) ;if L is not a list, returns 0 - prevents numbers in nested list from being added
          ((NOT (number? (cdr L))) (sum-up-numbers-simple (car L))) ;if first element is not a number, remove from list
-         
+         (ELSE (+ (car L) (sum-up-numbers-simple (cdr L)))) ; else - performs addition on numbers in list, recursively
          ) ;closes out conditional 
 )
          
-(sum-up-numbers-simple '(100 (100)))
+(sum-up-numbers-simple '(a 100 300 (100)))
