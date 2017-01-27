@@ -8,3 +8,9 @@
 ) ;closes out funtion definition
 
 (reverse-general '(a b (b f)))
+
+(DEFINE (sum-up-numbers-simple L) ;function definition: name and parameter (takes in a list called L)
+        (COND ((NULL? L) 0)) ;returns 0 if list is empty
+)
+
+(sum-up-numbers-simple '())
