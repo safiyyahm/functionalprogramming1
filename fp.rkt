@@ -10,7 +10,10 @@
 (reverse-general '(a b (b f)))
 
 (DEFINE (sum-up-numbers-simple L) ;function definition: name and parameter (takes in a list called L)
-        (COND ((NULL? L) 0)) ;returns 0 if list is empty
+        (COND
+         ((NULL? L) 0) ;returns 0 if entry is an empty list
+         ((NOT (LIST? L)) 0) ;if L is not a list, returns 0
+         ) ;closes out conditional 
 )
-
-(sum-up-numbers-simple '())
+         
+(sum-up-numbers-simple '((100)))
