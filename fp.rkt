@@ -13,7 +13,7 @@
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
          ((NOT (LIST? L)) 0) ;if L is not a list, returns 0
-         ((NOT (number? (cdr L)))) ;if first element is not a number, remove from list
+         ((NOT (number? (cdr L))) (sum-up-numbers-simple L)) ;if first element is not a number, remove from list
          ) ;closes out conditional 
 )
          
