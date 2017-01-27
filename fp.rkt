@@ -29,7 +29,6 @@
         ) ;closes out conditional
 ) ;closes out function
 
-(sum-up-numbers-general '(100 a 200 (200)))
 
 (DEFINE (mini L) ;helper function to get the minimum value in a list
         (COND
@@ -41,11 +40,21 @@
          ) ;closes out conditional
 ) ;closes out function
 
-(DEFINE (min-above-min LI L2) ;function def: name and parameter (takes in two lists called L1 and L2)
-        (COND
-         ((NULL? L1) #F) ;return False if L1 does not have any values
-         ((NULL? L2) (mini '(L1))) ;return minimum value in L1 if L2 is empty
+(DEFINE (combinel L1 L2) ;helper function to combine 2 lists into one
+        (IF (NULL? L1) L2 ;if L1 is empty, return L2
+            (IF (NULL? L2) L1 ;if L2 is empty, return L1
+                (CONS (car L1) (CONS (car L2) (combinel (cdr L1) (cdr L2)))) ;operations that combine the 2 lists into one list
+            )
+        )
+)
 
-         ) ;closes out conditional
+
+(DEFINE (min-above-min L1 L2) ;function def: name and parameter (takes in two lists called L1 and L2)
+        (IF (NULL? L1) #F ;return False if L1 does not have any values
+            (IF (NULL? L2) (mini '(L1)) ;return minimum value in L1 if L2 is empty
+                (combinel '(L1) '(L2))
+            )
+         )
+         
 ) ;closes out function
 
