@@ -23,11 +23,11 @@
 (DEFINE (sum-up-numbers-general L) ;function definition: name and parameter (takes in a list called L)
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
-         ((LIST? L) (car L)) (+ (sum-up-numbers-general (car L)) (sum-up-numbers-general(cdr L)))
          ((NOT (number? (car L))) (sum-up-numbers-general (cdr L))) ;if first element is not a list, disregard and continue looking for numbers
-         (ELSE (+ (car L) (sum-up-numbers-general (cdr L)))) ; else - performs addition on valid entries in list; loops thru list using recursion
+         ((LIST? L)
+          (+ (car L) (sum-up-numbers-general (cdr L)))) 
         )
 )
 
-(sum-up-numbers-general '((100) 100))
+(sum-up-numbers-general '(100 a 200 (200)))
 
