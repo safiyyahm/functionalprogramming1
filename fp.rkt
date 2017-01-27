@@ -21,14 +21,12 @@
 (DEFINE (sum-up-numbers-general L) ;function definition: name and parameter (takes in a list called L)
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
-         (number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))) ;if element is not a number, disregard it
-         ((LIST? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))                  
-         (ELSE (sum-up-numbers-general (cdr L)))
-         ) ;closes out conditional
-        );closes out conditional
-) ;closes out function
+         ((LIST? (car L)) (+ (sum-up-numbers-general (car L)) (sum-up-numbers-general (cdr L)))) ;summation of numbers in list
+         ((number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L)))) ;checks if value in list is a number; if so, continues with summation
+         (ELSE (sum-up-numbers-general (cdr L))) ;else statement continues summation if other conditions are not fulfilled
+         );closes out conditional
+);closes out function definition
 
-(sum-up-numbers-general '(200 (200)))
 
 (DEFINE (mini L) ;helper function to get the minimum value in a list
         (COND
