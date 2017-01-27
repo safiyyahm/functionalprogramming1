@@ -1,4 +1,10 @@
-(DEFINE (reverse-general L) ;function definition: name & parameter (takes in a list called L)
-        (if(NULL? L) '())   ;condition for empty list; if list is empty, return "()"
-        (append (reverse-general (cdr L)) (list (car L)))     ;append function needed to reverse list
-)
+(DEFINE (reverse-general L) ;function definition: name and parameter (takes in a list called L)
+        (COND ((NULL? L) '()) ;checks if list is empty; if so, returns empty parameter
+              ((LIST? L) ;checks if the list is an actual list; if so, continues with reversal
+               (append (reverse-general (cdr L)) (list(reverse-general (car L)))) ;uses append function with car and cdr to reverse list
+               ) ;closes out condition for if function is a list
+              (else L) ;used to return the list
+        ) ;closes out conditional
+) ;closes out funtion definition
+
+(reverse-general '(a b (b f)))
