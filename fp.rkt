@@ -24,8 +24,10 @@
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
          ((NOT (number? (car L))) (sum-up-numbers-general (cdr L))) ;if first element is not a list, disregard and continue looking for numbers
-         ((LIST? L)
-          (+ (car L) (sum-up-numbers-general (cdr L)))) 
+         ((LIST? L) ;checks if L is a list
+          (+ (car L) (sum-up-numbers-general (cdr L)))) ;performs summation of L
+          ((LIST? L) ; *should check if there is a list within the list
+           (car L) (+ (sum-up-numbers-general (car L)) (sum-up-numbers-general(cdr L)))) ;adds numbers in nested list to sum of list
         )
 )
 
