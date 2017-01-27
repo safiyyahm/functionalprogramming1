@@ -33,3 +33,17 @@
 
 (sum-up-numbers-general '(100 a 200 (200)))
 
+(DEFINE (min L)
+        (COND
+         ((NOT (number? (car L))) (sum-up-numbers-general (cdr L)))
+         ((NULL? (cdr L)) (car L))
+         ((< (car L) (min (cdr L))) (car L))
+         (ELSE (min (cdr L)))
+         )
+)
+
+
+;(DEFINE (min-above-min LI L2) ;function def: name and parameter (takes in two lists called L1 and L2)
+
+;)
+
