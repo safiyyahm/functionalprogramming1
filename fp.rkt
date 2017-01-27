@@ -24,5 +24,8 @@
         (COND
          ((NULL? L) 0) ;returns 0 if entry is an empty list
          ((NOT (number? (car L))) (sum-up-numbers-general (cdr L))) ;if first element is not a list, disregard and continue looking for numbers
+         (ELSE (+ (car L) (sum-up-numbers-general (cdr L)))) ; else - performs addition on valid entries in list; loops thru list using recursion
         )
 )
+
+(sum-up-numbers-general '(a))
