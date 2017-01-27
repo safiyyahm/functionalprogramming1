@@ -42,6 +42,10 @@
 ) ;closes out function
 
 (DEFINE (min-above-min LI L2) ;function def: name and parameter (takes in two lists called L1 and L2)
+        (COND
+         ((NULL? L1) #F) ;return False if L1 does not have any values
+         ((NULL? L2) (mini '(L1))) ;return minimum value in L1 if L2 is empty
 
-)
+         ) ;closes out conditional
+) ;closes out function
 
